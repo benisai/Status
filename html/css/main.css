@@ -104,6 +104,7 @@ p {
 	color: hsl(var(--color), 95%, 88%);
 }
 #main-device-name {
+	display: none;
 	margin-bottom: 4px;
 	opacity: .7;
 }
