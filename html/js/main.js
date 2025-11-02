@@ -1,9 +1,10 @@
 window.addEventListener("load", () => {
 	update()
+	hashchange()
 	setInterval(update, 1500)
 })
 
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
 	if (!localStorage.getItem("statusapp-light")) selectTheme(!platformIsDark(), false)
 })
 
@@ -21,11 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
 	catch (e) {}
 })
 
-window.addEventListener("hashchange", (event) => {
+function hashchange() {
 	let hash = window.location.hash.slice(1)
 	if (hash == "") hash = "main"
 	goto(hash, false)
-})
+}
+window.addEventListener("hashchange", hashchange)
 
 function loadBackButtons() {
 	let buttons = getClasses("back")
